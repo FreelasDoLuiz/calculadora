@@ -177,7 +177,7 @@ function App() {
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams('teste')
+      body: encodedData
     })
       .then((e) => console.log(e))
       .catch((err) => console.log(err))
@@ -617,7 +617,11 @@ function App() {
         exit={{ opacity: 0, y: 20, height: 250 }}
         transition={{ duration: 0.5 }}
       >
-        <form onSubmit={handleOptionsSubmit(handleSubmitForm)}>
+        <form
+          onSubmit={handleOptionsSubmit(handleSubmitForm)}
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
           <div className="p-4 flex flex-col gap-2">
             <InputSelect
               options={[
