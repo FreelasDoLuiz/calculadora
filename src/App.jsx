@@ -222,13 +222,7 @@ function App() {
         exit={{ opacity: 0, y: 20, height: 250 }}
         transition={{ duration: 0.5 }}
       >
-        <form
-          onSubmit={handleInfoSubmit(() => setStep((e) => e + 1))}
-          // eslint-disable-next-line react/no-unknown-property
-          netlify
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-        >
+        <form onSubmit={handleInfoSubmit(() => setStep((e) => e + 1))}>
           <div className="p-4 flex flex-col gap-2">
             <Input
               id={'nome'}
@@ -293,13 +287,7 @@ function App() {
         exit={{ opacity: 0, y: 20, height: 250 }}
         transition={{ duration: 0.5 }}
       >
-        <form
-          onSubmit={handlePropSubmit(() => setStep((e) => e + 1))}
-          // eslint-disable-next-line react/no-unknown-property
-          netlify
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-        >
+        <form onSubmit={handlePropSubmit(() => setStep((e) => e + 1))}>
           <div className="p-4 flex flex-col gap-2">
             <InputSelect
               options={[
@@ -368,10 +356,6 @@ function App() {
         }}
         exit={{ opacity: 0, y: 20, height: 250 }}
         transition={{ duration: 0.5 }}
-        // eslint-disable-next-line react/no-unknown-property
-        netlify
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
       >
         <div className="p-4 grid grid-col-1 sm:grid-cols-2 gap-2 sm:overflow-auto sm:max-h-[60vh]">
           <CounterInput
@@ -633,13 +617,7 @@ function App() {
         exit={{ opacity: 0, y: 20, height: 250 }}
         transition={{ duration: 0.5 }}
       >
-        <form
-          onSubmit={handleOptionsSubmit(handleSubmitForm)}
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          // eslint-disable-next-line react/no-unknown-property
-          netlify
-        >
+        <form onSubmit={handleOptionsSubmit(handleSubmitForm)}>
           <div className="p-4 flex flex-col gap-2">
             <InputSelect
               options={[
@@ -719,6 +697,7 @@ function App() {
         netlify
         data-netlify="true"
         data-netlify-honeypot="bot-field"
+        hidden
       />
       <div
         className={`
