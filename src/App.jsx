@@ -693,13 +693,18 @@ function App() {
       }}
     >
       <form
+        name="contact"
         // eslint-disable-next-line react/no-unknown-property
         netlify
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
+        // eslint-disable-next-line react/no-unknown-property
+        netlify-honeypot="bot-field"
         hidden
-        name="contact"
-      />
+      >
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+        <input type="hidden" name="form-name" value="contact" />
+      </form>
       <div
         className={`
           mt-6
