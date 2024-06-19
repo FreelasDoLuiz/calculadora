@@ -719,7 +719,6 @@ function App() {
         netlify
         data-netlify="true"
         data-netlify-honeypot="bot-field"
-        className="hidden"
       />
       <div
         className={`
