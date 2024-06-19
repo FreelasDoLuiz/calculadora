@@ -178,7 +178,9 @@ function App() {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encodedData
-    }).then(() => alert('Enviado!'))
+    })
+      .then(() => alert('Enviado!'))
+      .catch((err) => console.log(err))
   }
 
   let currentForm
