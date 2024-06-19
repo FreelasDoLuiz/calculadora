@@ -692,19 +692,6 @@ function App() {
         backgroundAttachment: 'fixed'
       }}
     >
-      <form
-        name="contact"
-        // eslint-disable-next-line react/no-unknown-property
-        netlify
-        // eslint-disable-next-line react/no-unknown-property
-        netlify-honeypot="bot-field"
-        hidden
-      >
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <textarea name="message"></textarea>
-        <input type="hidden" name="form-name" value="contact" />
-      </form>
       <div
         className={`
           mt-6
