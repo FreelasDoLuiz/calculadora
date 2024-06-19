@@ -179,7 +179,7 @@ function App() {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams('teste')
     })
-      .then(() => alert('Enviado!'))
+      .then((e) => console.log(e))
       .catch((err) => console.log(err))
   }
 
