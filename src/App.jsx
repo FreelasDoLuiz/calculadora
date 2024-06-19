@@ -150,7 +150,7 @@ function App() {
       nome: infoData.nome,
       name: infoData.nome,
       email: infoData.email,
-      message: {
+      message: encode({
         whatsapp: infoData.whatsapp,
         temPropriedade: propData.temPropriedade,
         metrosDaPropriedade: propData.metrosDaPropriedade,
@@ -174,7 +174,7 @@ function App() {
         tempoParaIniciarAObra: optionsData.tempoParaIniciarAObra,
         orçamentoDisponivel: optionsData.orçamentoDisponivel,
         formaDePagamento: optionsData.formaDePagamento
-      }
+      })
     })
 
     fetch('/', {
