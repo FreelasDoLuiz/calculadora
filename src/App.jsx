@@ -146,7 +146,7 @@ function App() {
     const amoutData = getAmoutValue()
     const optionsData = getOptionsValue()
     const encodedData = encode({
-      'form-name': 'orcamentos',
+      'form-name': 'contact',
       nome: infoData.nome,
       email: infoData.email,
       whatsapp: infoData.whatsapp,
@@ -177,7 +177,7 @@ function App() {
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encodedData
+      body: new URLSearchParams('teste')
     })
       .then(() => alert('Enviado!'))
       .catch((err) => console.log(err))
