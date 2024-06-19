@@ -148,6 +148,7 @@ function App() {
     const encodedData = encode({
       'form-name': 'contact',
       nome: infoData.nome,
+      name: infoData.nome,
       email: infoData.email,
       whatsapp: infoData.whatsapp,
       temPropriedade: propData.temPropriedade,
