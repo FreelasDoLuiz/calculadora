@@ -192,9 +192,7 @@ function App() {
         body: encodedData
       })
 
-      if (!response.ok) {
-        setSubmitError(true)
-      }
+      console.log(response)
     } catch (err) {
       setSubmitError(true)
     } finally {
