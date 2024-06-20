@@ -151,6 +151,8 @@ function App() {
       name: infoData.nome,
       email: infoData.email,
       message: JSON.stringify({
+        name: infoData.nome,
+        email: infoData.email,
         whatsapp: infoData.whatsapp,
         temPropriedade: propData.temPropriedade,
         metrosDaPropriedade: propData.metrosDaPropriedade,
