@@ -14,7 +14,13 @@ export function StepMarker({ selected, text, label, showText, line, step }) {
             absolute
             text-xs
             sm:text-md
-            font-semibold text-nowrap bottom-[-20px] text-blue-500 transition-all duration-[660ms] ${showText ? 'opacity-100' : 'opacity-0'}
+            font-semibold
+            text-nowrap
+            bottom-[-20px]
+            text-blue-500
+            transition-all
+            duration-[660ms]
+            ${showText ? 'opacity-100' : 'opacity-0'}
         `}
         >
           {text}

@@ -26,6 +26,7 @@ export function InputSelect({ label, onChange, value, options, error }) {
         onChange={(value) => onChange(value.value)}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        isSearchable={false}
         formatOptionLabel={(option) => (
           <div className="flex flex-row items-center gap-3 cursor-pointer">
             <div>{option.label}</div>
