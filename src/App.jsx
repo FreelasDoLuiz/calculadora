@@ -150,7 +150,7 @@ function App() {
       nome: infoData.nome,
       name: infoData.nome,
       email: infoData.email,
-      message: encode({
+      message: JSON.stringify({
         whatsapp: infoData.whatsapp,
         temPropriedade: propData.temPropriedade,
         metrosDaPropriedade: propData.metrosDaPropriedade,
@@ -172,7 +172,7 @@ function App() {
         piscina: amoutData.piscina,
         padraoDeAcabamento: optionsData.padraoDeAcabamento,
         tempoParaIniciarAObra: optionsData.tempoParaIniciarAObra,
-        orçamentoDisponivel: optionsData.orçamentoDisponivel,
+        orcamentoDisponivel: optionsData.orçamentoDisponivel,
         formaDePagamento: optionsData.formaDePagamento
       })
     })
