@@ -752,7 +752,8 @@ function App() {
         className={`
           mt-6
           rounded-md
-          sm:min-h-svh
+          min-h-svh
+          sm:min-h-fit
           w-[94%]
           md:w-5/6
           ${step === 3 ? 'xl:w-3/5' : 'xl:w-2/5'}
