@@ -711,22 +711,24 @@ function App() {
         {submitting ? (
           <div className="flex flex-col gap-2 items-center justify-center">
             <ImSpinner2 size={150} className="text-blue-500 animate-spin" />
-            <p className="text-white">Enviando suas informações...</p>
+            <p className="text-white text-center">
+              Enviando suas informações...
+            </p>
           </div>
-        ) : submitError ? (
+        ) : !submitError ? (
           <div className="flex flex-col gap-2 items-center justify-center">
             <TbFaceIdError size={150} className="text-rose-500" />
-            <p className="text-rose-500 text-2xl font-light">
+            <p className="text-rose-500 text-2xl font-light text-center">
               Infelizmente algo deu errado, tente mais tarde!
             </p>
           </div>
         ) : (
           <div className="flex flex-col gap-2 items-center justify-center">
             <FaCircleCheck size={150} className="text-blue-500" />
-            <p className="text-white font-semibold text-2xl">
+            <p className="text-white font-semibold text-2xl text-center">
               Informações enviadas!
             </p>
-            <p className="text-white font-semibold text-lg">
+            <p className="text-white font-semibold text-lg text-center">
               Logo entraremos em contato por meio do whatsapp informado
             </p>
           </div>
