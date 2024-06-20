@@ -192,7 +192,9 @@ function App() {
         body: encodedData
       })
 
-      console.log(response)
+      if (!response.ok) {
+        setSubmitError(true)
+      }
     } catch (err) {
       setSubmitError(true)
     } finally {
@@ -713,7 +715,7 @@ function App() {
               Enviando suas informações...
             </p>
           </div>
-        ) : !submitError ? (
+        ) : submitError ? (
           <div className="flex flex-col gap-2 items-center justify-center">
             <TbFaceIdError size={150} className="text-rose-500" />
             <p className="text-rose-500 text-2xl font-light text-center">
