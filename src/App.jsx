@@ -703,27 +703,27 @@ function App() {
       <motion.div
         key="step-6"
         initial={{ opacity: 0, y: 20, height: 250 }}
-        animate={{ opacity: 1, y: 0, height: 'fit-content' }}
-        exit={{ opacity: 0, y: 20, height: 250 }}
-        transition={{ duration: 0.5 }}
-        className="w-full h-full flex items-center justify-center p-10"
+        animate={{ opacity: 1, y: 0, height: 350 }}
+        exit={{ opacity: 0, y: 20, height: 350 }}
+        transition={{ duration: 0.8 }}
+        className="w-full h-full flex items-center justify-center p-10 "
       >
         {submitting ? (
-          <div className="flex flex-col gap-2 items-center justify-center">
+          <div className="flex flex-col gap-2 items-center justify-center min-h-[350px] transition-all ">
             <ImSpinner2 size={150} className="text-blue-500 animate-spin" />
             <p className="text-white text-center">
               Enviando suas informações...
             </p>
           </div>
         ) : submitError ? (
-          <div className="flex flex-col gap-2 items-center justify-center">
+          <div className="flex flex-col gap-2 items-center justify-center min-h-[350px] transition-all">
             <TbFaceIdError size={150} className="text-rose-500" />
             <p className="text-rose-500 text-2xl font-light text-center">
               Infelizmente algo deu errado, tente mais tarde!
             </p>
           </div>
         ) : (
-          <div className="flex flex-col gap-2 items-center justify-center">
+          <div className="flex flex-col gap-2 items-center justify-center min-h-[350px] transition-all">
             <FaCircleCheck size={150} className="text-blue-500" />
             <p className="text-white font-semibold text-2xl text-center">
               Informações enviadas!
