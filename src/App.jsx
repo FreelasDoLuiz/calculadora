@@ -61,7 +61,7 @@ const OptionsDataSchema = z.object({
 })
 
 function App() {
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(4)
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState(false)
 
@@ -242,7 +242,7 @@ function App() {
         transition={{ duration: 0.5 }}
       >
         <form onSubmit={handleInfoSubmit(() => setStep((e) => e + 1))}>
-          <div className="p-4 flex flex-col gap-2">
+          <div className="p-3 sm:p-4 flex flex-col gap-2">
             <Input
               id={'nome'}
               label={'Nome'}
@@ -307,7 +307,7 @@ function App() {
         transition={{ duration: 0.5 }}
       >
         <form onSubmit={handlePropSubmit(() => setStep((e) => e + 1))}>
-          <div className="p-4 flex flex-col gap-2">
+          <div className="p-3 sm:p-4 flex flex-col gap-2">
             <InputSelect
               options={[
                 { label: 'Sim', value: 'Sim' },
@@ -637,7 +637,7 @@ function App() {
         transition={{ duration: 0.5 }}
       >
         <form onSubmit={handleOptionsSubmit(handleSubmitForm)}>
-          <div className="p-4 flex flex-col gap-2">
+          <div className="p-3 sm:p-4 flex flex-col gap-2">
             <InputSelect
               options={[
                 { label: 'Prata (padrão inicial)', value: 'prata' },
@@ -729,7 +729,7 @@ function App() {
               Informações enviadas!
             </p>
             <p className="text-white font-semibold text-lg text-center">
-              Logo entraremos em contato por meio do whatsapp informado
+              Enviaremos seu orçamento no whats app informado
             </p>
           </div>
         )}

@@ -67,8 +67,10 @@ export function InputSelect({ label, onChange, value, options, error }) {
         className={`
         cursor-pointer
         absolute
+        text-wrap
         text-sm
         sm:text-lg
+        max-w-[75%]
         duration-150
         transform
         -translate-y-4

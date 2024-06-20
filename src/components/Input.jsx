@@ -29,12 +29,14 @@ export function Input({ id, label, error, register, required }) {
         htmlFor={id}
         className={`
         absolute
-        text-md
+        text-xs
+        sm:text-md
         cursor-text
         duration-150
         transform
-        -translate-y-4
-        top-5
+        -translate-y-5
+        top-6
+        sm:top-5
         origin-[0]
         peer-placeholder-shown:scale-100
         peer-placeholder-shown:translate-y-0
