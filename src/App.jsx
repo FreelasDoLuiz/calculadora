@@ -63,7 +63,7 @@ const OptionsDataSchema = z.object({
 })
 
 function App() {
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(5)
   const [result, setResult] = useState(0)
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState(false)
@@ -738,14 +738,18 @@ function App() {
           //     Enviaremos seu orçamento no whats app informado
           //   </p>
           // </div>
-          <div className="flex flex-col gap-6 items-center justify-center min-h-[350px] transition-all">
+          <div className="flex flex-col gap-2 sm:gap-6 items-center justify-center min-h-[350px] transition-all">
             <img
               src="./logo.png"
               alt="logo"
               className="w-[150px] h-[150px] -mt-10"
             />
             <div className="flex flex-col justify-center items-center gap-2">
-              <h1 className="text-white text-2xl font-bold">
+              <p className="text-white -mt-10 text-center">
+                *orçamento online possui margens de erro, faça seu orçamento
+                realista com a Península
+              </p>
+              <h1 className="text-white text-xl sm:text-2xl font-bold text-center">
                 Seu orçamento final:
               </h1>
               <p className="text-white text-md sm:text-lg font-semibold capitalize">
@@ -754,7 +758,7 @@ function App() {
               </p>
             </div>
             <div className="flex flex-col justify-center items-center gap-2">
-              <h1 className="text-white text-2xl font-bold">
+              <h1 className="text-white text-xl sm:text font-bold">
                 Outros orçamentos:
               </h1>
 
