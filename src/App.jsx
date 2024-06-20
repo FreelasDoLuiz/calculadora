@@ -279,7 +279,7 @@ function App() {
               />
               <label
                 htmlFor="acceptTerms"
-                className="text-center pt-2 cursor-pointer text-white/80"
+                className="text-xs sm:text-lg text-center pt-2 cursor-pointer text-white/80"
               >
                 Ao selecionar essa opção você aceita receber informações da
                 Península nos contatos informados acima
@@ -683,7 +683,7 @@ function App() {
               onChange={(e) => setOptionsValue('formaDePagamento', e)}
               value={watchOptionsValue('formaDePagamento')}
               error={optionsErrors.formaDePagamento}
-              label="Como realizará o pagamento da obra?"
+              label="Forma de pagamento da obra?"
             />
           </div>
           <div className="w-full flex gap-4 px-4 mt-10">
@@ -739,7 +739,7 @@ function App() {
 
   return (
     <div
-      className="w-full min-h-screen flex flex-col justify-center items-center"
+      className="w-full min-h-svh flex flex-col justify-center items-center"
       style={{
         backgroundImage: 'url("./image3.png")',
         backgroundRepeat: 'no-repeat',

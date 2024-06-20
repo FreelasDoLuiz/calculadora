@@ -30,7 +30,7 @@ export function Input({ id, label, error, register, required }) {
         className={`
         absolute
         text-xs
-        sm:text-md
+        sm:text-lg
         cursor-text
         duration-150
         transform
