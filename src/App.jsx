@@ -192,7 +192,7 @@ function App() {
         body: encodedData
       })
 
-      if (!response.ok) {
+      if (response.status !== 200) {
         setSubmitError(true)
       }
     } catch (err) {
