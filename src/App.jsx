@@ -648,13 +648,13 @@ function App() {
             />
             <InputSelect
               options={[
-                { label: 'Até 500 mil', value: 'Até 500 mil' },
-                { label: '500 mil a 1 milhão', value: '500 mil a 1 milhão' },
+                { label: 'Até 500 mil', value: 'Ate 500 mil' },
+                { label: '500 mil a 1 milhão', value: '500 mil a 1 milhao' },
                 {
                   label: '1 milhão a 1.5 milhões',
                   value: '1 milhão a 1.5 milhões'
                 },
-                { label: 'Acima de 1,5 milhões', value: 'Acima de 1,5 milhões' }
+                { label: 'Acima de 1,5 milhões', value: 'Acima de 1,5 milhoes' }
               ]}
               onChange={(e) => setOptionsValue('orçamentoDisponivel', e)}
               value={watchOptionsValue('orçamentoDisponivel')}
@@ -664,7 +664,7 @@ function App() {
             <InputSelect
               options={[
                 { label: 'Financiamento', value: 'financiamento' },
-                { label: 'Capital próprio', value: 'capital próprio' }
+                { label: 'Capital próprio', value: 'capital proprio' }
               ]}
               onChange={(e) => setOptionsValue('formaDePagamento', e)}
               value={watchOptionsValue('formaDePagamento')}
