@@ -44,7 +44,8 @@ export function InputSelect({ label, onChange, value, options, error }) {
           colors: {
             ...theme.colors,
             primary: error && !value ? 'rgb(244 63 94)' : '#3b83f6be',
-            primary25: '#3b83f661'
+            primary25: '#3b83f661',
+            neutral20: 'black'
           }
         })}
         styles={{

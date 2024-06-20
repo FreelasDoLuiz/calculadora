@@ -316,7 +316,7 @@ function App() {
               onChange={(e) => setPropValue('temPropriedade', e)}
               value={watchPropValue('temPropriedade')}
               error={propErrors.temPropriedade}
-              label="Tem terreno?"
+              label="Possui terreno?"
             />
             <InputSelect
               options={[
@@ -774,7 +774,7 @@ function App() {
         `}
       >
         {step !== 0 && step < 5 && (
-          <div className="w-full flex justify-around items-start mt-10 px-10">
+          <div className="w-full flex justify-around items-start mt-10 px:8 sm:px-10">
             <StepMarker
               label={1}
               step={step}
