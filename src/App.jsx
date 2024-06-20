@@ -744,8 +744,7 @@ function App() {
         backgroundImage: 'url("./image3.png")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        backgroundPosition: 'top',
-        backgroundAttachment: 'fixed'
+        backgroundPosition: 'top'
       }}
     >
       <div
