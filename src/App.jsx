@@ -739,7 +739,7 @@ function App() {
 
   return (
     <div
-      className="w-full min-h-svh flex flex-col justify-center items-center"
+      className="w-full min-h-screen flex flex-col justify-center items-center"
       style={{
         backgroundImage: 'url("./image3.png")',
         backgroundRepeat: 'no-repeat',
@@ -752,7 +752,6 @@ function App() {
         className={`
           mt-6
           rounded-md
-          min-h-svh
           sm:min-h-fit
           w-[94%]
           md:w-5/6
