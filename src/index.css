@@ -39,7 +39,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(82, 82, 82, 0.9); /* Scrollbar thumb color */
+  background-color: rgb(59, 130, 246); /* Scrollbar thumb color */
   border-radius: 10px; /* Rounded scrollbar thumb */
   border: 2px solid rgb(82, 82, 82, 0); /* Padding around scrollbar thumb */
 }

@@ -4,6 +4,8 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { motion, AnimatePresence } from 'framer-motion'
 
+import { getOrçamento } from './calc'
+
 import { ImSpinner2 } from 'react-icons/im'
 import { FaCircleCheck } from 'react-icons/fa6'
 import { TbFaceIdError } from 'react-icons/tb'
@@ -62,6 +64,7 @@ const OptionsDataSchema = z.object({
 
 function App() {
   const [step, setStep] = useState(0)
+  const [result, setResult] = useState(0)
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState(false)
 
@@ -186,6 +189,8 @@ function App() {
       })
     })
     try {
+      const result = getOrçamento(amoutData)
+      setResult({ ...result, selectedPadrao: optionsData.padraoDeAcabamento })
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -197,6 +202,7 @@ function App() {
       }
     } catch (err) {
       setSubmitError(true)
+      console.log(err)
     } finally {
       setSubmitting(false)
     }
@@ -693,7 +699,7 @@ function App() {
               type="back"
               buttonAction={() => setStep((e) => e - 1)}
             />
-            <Button label="Enviar orçamento" type="submit" />
+            <Button label="Ver orçamento" type="submit" />
           </div>
         </form>
       </motion.div>
@@ -702,9 +708,9 @@ function App() {
     currentForm = (
       <motion.div
         key="step-6"
-        initial={{ opacity: 0, y: 20, height: 250 }}
-        animate={{ opacity: 1, y: 0, height: 350 }}
-        exit={{ opacity: 0, y: 20, height: 350 }}
+        initial={{ opacity: 0, y: 20, height: 450 }}
+        animate={{ opacity: 1, y: 0, height: 450 }}
+        exit={{ opacity: 0, y: 20, height: 450 }}
         transition={{ duration: 0.8 }}
         className="w-full h-full flex items-center justify-center p-10 "
       >
@@ -723,14 +729,53 @@ function App() {
             </p>
           </div>
         ) : (
-          <div className="flex flex-col gap-2 items-center justify-center min-h-[350px] transition-all">
-            <FaCircleCheck size={150} className="text-blue-500" />
-            <p className="text-white font-semibold text-2xl text-center">
-              Informações enviadas!
-            </p>
-            <p className="text-white font-semibold text-lg text-center">
-              Enviaremos seu orçamento no whats app informado
-            </p>
+          // <div className="flex flex-col gap-2 items-center justify-center min-h-[350px] transition-all">
+          //   <FaCircleCheck size={150} className="text-blue-500" />
+          //   <p className="text-white font-semibold text-2xl text-center">
+          //     Informações enviadas!
+          //   </p>
+          //   <p className="text-white font-semibold text-lg text-center">
+          //     Enviaremos seu orçamento no whats app informado
+          //   </p>
+          // </div>
+          <div className="flex flex-col gap-6 items-center justify-center min-h-[350px] transition-all">
+            <img
+              src="./logo.png"
+              alt="logo"
+              className="w-[150px] h-[150px] -mt-10"
+            />
+            <div className="flex flex-col justify-center items-center gap-2">
+              <h1 className="text-white text-2xl font-bold">
+                Seu orçamento final:
+              </h1>
+              <p className="text-white text-md sm:text-lg font-semibold capitalize">
+                Padrão {result.selectedPadrao}: R$
+                {result[getOptionsValue('padraoDeAcabamento')]},00
+              </p>
+            </div>
+            <div className="flex flex-col justify-center items-center gap-2">
+              <h1 className="text-white text-2xl font-bold">
+                Outros orçamentos:
+              </h1>
+
+              {['prata', 'ouro', 'diamante']
+                .filter((p) => p !== result.selectedPadrao)
+                .map((e, index) => (
+                  <p
+                    key={index}
+                    className="text-white text-md sm:text-lg font-semibold capitalize text-center"
+                  >
+                    Padrão {e}: R${result[e]},00
+                  </p>
+                ))}
+            </div>
+            <a
+              href="https://wa.me/5561982104088?text=Ol%C3%A1!%20Preenchi%20a%20calculadora%20de%20or%C3%A7amento%20da%20Pen%C3%ADnsula%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20"
+              target="_blank"
+              className="text-white bg-blue-500 p-3 rounded-md"
+            >
+              Fale com a Península
+            </a>
           </div>
         )}
       </motion.div>
