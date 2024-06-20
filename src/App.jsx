@@ -61,7 +61,7 @@ const OptionsDataSchema = z.object({
 })
 
 function App() {
-  const [step, setStep] = useState(4)
+  const [step, setStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState(false)
 
