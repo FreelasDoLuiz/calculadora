@@ -4,6 +4,9 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { motion, AnimatePresence } from 'framer-motion'
 
+import { ImSpinner2 } from 'react-icons/im'
+import { FaCircleCheck } from 'react-icons/fa6'
+import { TbFaceIdError } from 'react-icons/tb'
 import { Input } from './components/Input'
 import { Button } from './components/Button'
 import { CounterInput } from './components/CounterInput'
@@ -59,6 +62,8 @@ const OptionsDataSchema = z.object({
 
 function App() {
   const [step, setStep] = useState(0)
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
 
   const {
     register: infoRegister,
@@ -140,7 +145,9 @@ function App() {
     setInfoValue('whatsapp', formatPhoneNumber(phoneNumberValue))
   }, [phoneNumberValue, setInfoValue])
 
-  const handleSubmitForm = () => {
+  const handleSubmitForm = async () => {
+    setSubmitting(true)
+    setStep((e) => e + 1)
     const infoData = getInfoValues()
     const propData = getPropValues()
     const amoutData = getAmoutValue()
@@ -178,14 +185,21 @@ function App() {
         formaDePagamento: optionsData.formaDePagamento
       })
     })
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodedData
+      })
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encodedData
-    })
-      .then((e) => console.log(e))
-      .catch((err) => console.log(err))
+      if (!response.ok) {
+        setSubmitError(true)
+      }
+    } catch (err) {
+      setSubmitError(true)
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   let currentForm
@@ -613,7 +627,7 @@ function App() {
         </div>
       </motion.form>
     )
-  } else {
+  } else if (step === 4) {
     currentForm = (
       <motion.div
         key="step-5"
@@ -684,6 +698,41 @@ function App() {
         </form>
       </motion.div>
     )
+  } else {
+    currentForm = (
+      <motion.div
+        key="step-6"
+        initial={{ opacity: 0, y: 20, height: 250 }}
+        animate={{ opacity: 1, y: 0, height: 'fit-content' }}
+        exit={{ opacity: 0, y: 20, height: 250 }}
+        transition={{ duration: 0.5 }}
+        className="w-full h-full flex items-center justify-center p-10"
+      >
+        {submitting ? (
+          <div className="flex flex-col gap-2 items-center justify-center">
+            <ImSpinner2 size={150} className="text-blue-500 animate-spin" />
+            <p className="text-white">Enviando suas informações...</p>
+          </div>
+        ) : submitError ? (
+          <div className="flex flex-col gap-2 items-center justify-center">
+            <TbFaceIdError size={150} className="text-rose-500" />
+            <p className="text-rose-500 text-2xl font-light">
+              Infelizmente algo deu errado, tente mais tarde!
+            </p>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-2 items-center justify-center">
+            <FaCircleCheck size={150} className="text-blue-500" />
+            <p className="text-white font-semibold text-2xl">
+              Informações enviadas!
+            </p>
+            <p className="text-white font-semibold text-lg">
+              Logo entraremos em contato por meio do whatsapp informado
+            </p>
+          </div>
+        )}
+      </motion.div>
+    )
   }
 
   return (
@@ -722,7 +771,7 @@ function App() {
           duration-700
         `}
       >
-        {step !== 0 && (
+        {step !== 0 && step < 5 && (
           <div className="w-full flex justify-around items-start mt-10 px-10">
             <StepMarker
               label={1}
