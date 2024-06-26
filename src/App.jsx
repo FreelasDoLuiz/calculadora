@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { getOrçamento } from './calc'
 
 import { ImSpinner2 } from 'react-icons/im'
-import { FaCircleCheck } from 'react-icons/fa6'
+// import { FaCircleCheck } from 'react-icons/fa6'
 import { TbFaceIdError } from 'react-icons/tb'
 import { Input } from './components/Input'
 import { Button } from './components/Button'
@@ -155,6 +155,7 @@ function App() {
     const propData = getPropValues()
     const amoutData = getAmoutValue()
     const optionsData = getOptionsValue()
+    const result = getOrçamento(amoutData)
     const encodedData = encode({
       'form-name': 'contact',
       nome: infoData.nome,
@@ -185,11 +186,13 @@ function App() {
         padraoDeAcabamento: optionsData.padraoDeAcabamento,
         tempoParaIniciarAObra: optionsData.tempoParaIniciarAObra,
         orcamentoDisponivel: optionsData.orçamentoDisponivel,
-        formaDePagamento: optionsData.formaDePagamento
+        formaDePagamento: optionsData.formaDePagamento,
+        orcamentoPadraoPrata: result.prata,
+        orcamentoPadraoOuro: result.ouro,
+        orcamentoPadraoDiamante: result.diamante
       })
     })
     try {
-      const result = getOrçamento(amoutData)
       setResult({ ...result, selectedPadrao: optionsData.padraoDeAcabamento })
       const response = await fetch('/', {
         method: 'POST',
