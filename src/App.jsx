@@ -661,7 +661,7 @@ function App() {
             <InputSelect
               options={[
                 { label: 'Em até 6 meses', value: 'ate 6 meses' },
-                { label: 'Entre 6 e 12 meses', value: 'Entre 6 e 13 meses' },
+                { label: 'Entre 6 e 12 meses', value: 'Entre 6 e 12 meses' },
                 { label: 'Após 12 meses', value: 'Após 12 meses' }
               ]}
               onChange={(e) => setOptionsValue('tempoParaIniciarAObra', e)}
