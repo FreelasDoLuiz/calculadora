@@ -62,6 +62,10 @@ const OptionsDataSchema = z.object({
   formaDePagamento: z.string().min(1, 'Campo obrigatório.')
 })
 
+const ContactDataSchema = z.object({
+  permitirContato: z.string().min(1, 'Campo obrigatório.')
+})
+
 function App() {
   const [step, setStep] = useState(0)
   const [result, setResult] = useState(0)
@@ -142,6 +146,19 @@ function App() {
     resolver: zodResolver(OptionsDataSchema)
   })
 
+  const {
+    handleSubmit: handleContactSubmit,
+    setValue: setContactValue,
+    getValues: getContactValue,
+    watch: watchContactValue,
+    formState: { errors: contactErrors }
+  } = useForm({
+    defaultValues: {
+      permitirContato: 'Sim'
+    },
+    resolver: zodResolver(ContactDataSchema)
+  })
+
   const phoneNumberValue = watchInfoValue('whatsapp')
 
   useEffect(() => {
@@ -155,6 +172,7 @@ function App() {
     const propData = getPropValues()
     const amoutData = getAmoutValue()
     const optionsData = getOptionsValue()
+    const contactData = getContactValue()
     const result = getOrçamento(amoutData)
     const encodedData = encode({
       'form-name': 'contact',
@@ -189,7 +207,8 @@ function App() {
         formaDePagamento: optionsData.formaDePagamento,
         orcamentoPadraoPrata: result.prata,
         orcamentoPadraoOuro: result.ouro,
-        orcamentoPadraoDiamante: result.diamante
+        orcamentoPadraoDiamante: result.diamante,
+        permiteReuniao: contactData.permitirContato
       })
     })
     try {
@@ -645,7 +664,11 @@ function App() {
         exit={{ opacity: 0, y: 20, height: 250 }}
         transition={{ duration: 0.5 }}
       >
-        <form onSubmit={handleOptionsSubmit(handleSubmitForm)}>
+        <form
+          onSubmit={handleOptionsSubmit(
+            handlePropSubmit(() => setStep((e) => e + 1))
+          )}
+        >
           <div className="p-3 sm:p-4 flex flex-col gap-2">
             <InputSelect
               options={[
@@ -693,6 +716,42 @@ function App() {
               value={watchOptionsValue('formaDePagamento')}
               error={optionsErrors.formaDePagamento}
               label="Forma de pagamento da obra?"
+            />
+          </div>
+          <div className="w-full flex gap-4 px-4 mt-10">
+            <Button
+              outline
+              label="Voltar"
+              type="back"
+              buttonAction={() => setStep((e) => e - 1)}
+            />
+            <Button label="Próximo" type="submit" />
+          </div>
+        </form>
+      </motion.div>
+    )
+  } else if (step === 5) {
+    currentForm = (
+      <motion.div
+        key="step-6"
+        initial={{ opacity: 0, y: 20, height: 250 }}
+        animate={{ opacity: 1, y: 0, height: 'fit-content' }}
+        exit={{ opacity: 0, y: 20, height: 250 }}
+        transition={{ duration: 0.5 }}
+      >
+        <form onSubmit={handleContactSubmit(handleSubmitForm)}>
+          <div className="p-3 sm:p-4 flex flex-col gap-2">
+            <InputSelect
+              options={[
+                { label: 'Sim', value: 'Sim' },
+                { label: 'Não', value: 'Não' }
+              ]}
+              onChange={(e) => setContactValue('permitirContato', e)}
+              value={watchContactValue('permitirContato')}
+              error={contactErrors.permitirContato}
+              label="Deseja agendar uma reunião conosco sobre a construção?"
+              controlClass="pt-10"
+              labelSize="text-lg"
             />
           </div>
           <div className="w-full flex gap-4 px-4 mt-10">
@@ -824,7 +883,7 @@ function App() {
           duration-700
         `}
       >
-        {step !== 0 && step < 5 && (
+        {step !== 0 && step < 6 && (
           <div className="w-full flex justify-around items-start mt-10 px:8 sm:px-10">
             <StepMarker
               label={1}
@@ -854,7 +913,7 @@ function App() {
               label={4}
               step={step}
               selected={step >= 4}
-              showText={step === 4}
+              showText={step >= 4}
               text={'Finalização'}
             />
           </div>

@@ -1,7 +1,15 @@
 import { useRef, useState } from 'react'
 import Select from 'react-select'
 
-export function InputSelect({ label, onChange, value, options, error }) {
+export function InputSelect({
+  label,
+  onChange,
+  value,
+  options,
+  error,
+  controlClass,
+  labelSize
+}) {
   const [isFocused, setIsFocused] = useState(false)
 
   const handleFocus = () => setIsFocused(true)
@@ -34,7 +42,7 @@ export function InputSelect({ label, onChange, value, options, error }) {
         )}
         classNamePrefix="react-select"
         classNames={{
-          control: () => `px-2 pb-2 pt-4`,
+          control: () => `px-2 pb-2 pt-4 ` + controlClass,
           input: () => 'text-lg',
           option: () => 'text-lg'
         }}
@@ -69,7 +77,7 @@ export function InputSelect({ label, onChange, value, options, error }) {
         absolute
         text-wrap
         text-sm
-        sm:text-lg
+        sm:${labelSize || 'text-lg'}
         max-w-[75%]
         duration-150
         transform
