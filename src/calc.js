@@ -44,6 +44,7 @@ export function getOrçamento(amoutValues) {
   }
 
   return {
+    metragem: previewResult,
     prata: previewResult * 3000,
     ouro: previewResult * 4000,
     diamante: previewResult * 5000

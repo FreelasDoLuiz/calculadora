@@ -208,7 +208,8 @@ function App() {
         orcamentoPadraoPrata: result.prata,
         orcamentoPadraoOuro: result.ouro,
         orcamentoPadraoDiamante: result.diamante,
-        permiteReuniao: contactData.permitirContato
+        permiteReuniao: contactData.permitirContato,
+        metragemTotal: result.metragem
       })
     })
     try {
